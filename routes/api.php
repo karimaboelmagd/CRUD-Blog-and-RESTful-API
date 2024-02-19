@@ -15,12 +15,12 @@ Route::controller(AuthController::class)->group(function () {
 
 
 
-Route::group(['middleware'=>['jwt.verify']],function (){
+Route::group(['middleware'=>['auth:sanctum']],function (){
     Route::get('/posts',[PostController::class,'Index']);
-    Route::get('/post/{id}',[PostController::class,'Show']);
+    Route::get('/posts/{id}',[PostController::class,'Show']);
     Route::post('/posts',[PostController::class,'Store']);
-    Route::post('/post/{id}',[PostController::class,'Update']);
-    Route::post('/posts/{id}',[PostController::class,'Destroy']);
+    Route::patch('/posts/{id}',[PostController::class,'Update']);
+    Route::delete('/posts/{id}',[PostController::class,'Destroy']);
 });
 
 

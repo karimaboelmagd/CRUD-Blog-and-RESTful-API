@@ -8,6 +8,7 @@ use App\Models\Post;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class PostController extends Controller
 {
@@ -58,7 +59,7 @@ class PostController extends Controller
         return Response()->json([
             'Data'=>new PostResource($post),
             'message'=>'Post Created successfully',
-            'status'=>200
+            'status'=> SymfonyResponse::HTTP_CREATED,
         ]);
     }//End Method
 
@@ -79,7 +80,8 @@ class PostController extends Controller
             return response()->json([
                 'Data'=>"",
                 'message'=>'The Post Not Found',
-                'status'=>404
+                'status'=>
+                SymfonyResponse::HTTP_NOT_FOUND
             ]);
         }
         // If The Post ID Found ,UPDATE THE POST
@@ -88,7 +90,7 @@ class PostController extends Controller
             return Response()->json([
                 'Data'=>new PostResource($post),
                 'message'=>'Post Updated successfully',
-                'status'=>200
+                'status'=> SymfonyResponse::HTTP_OK,
             ]);
         }
     }//End Method
@@ -110,7 +112,7 @@ class PostController extends Controller
             return Response()->json([
                 'Data'=>"",
                 'message'=>'Post Deleted successfully',
-                'status'=>200
+                'status'=> SymfonyResponse::HTTP_NO_CONTENT,
             ]);
         }
     }//End Method
