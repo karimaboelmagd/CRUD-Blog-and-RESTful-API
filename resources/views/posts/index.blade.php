@@ -35,6 +35,7 @@
                     </div>
 
                 </div>
+
                 <div class="card-body">
 
                     @if(session()->has('delete'))
@@ -53,21 +54,28 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Body</th>
+                            <th>Category</th>
                             <th>Created_at</th>
                             <th>Processes</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($posts as $post)
                             <tr>
+
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->body}}</td>
+                                <td>{{optional($post->category)->name}}</td>
                                 <td>{{$post->created_at}}</td>
                                 <td>
                                     <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-sm" role="button" aria-disabled="true">Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_post{{$post->id}}">Delete</button>
                                 </td>
+
+
+
                             </tr>
                             @include('posts.destroy')
                         @endforeach
@@ -80,5 +88,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+
 
 @endsection

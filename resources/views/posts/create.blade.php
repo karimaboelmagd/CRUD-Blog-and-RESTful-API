@@ -57,19 +57,34 @@
                             <h3 class="card-title">Add New Post</h3>
                         </div>
                         <!-- /.card-header -->
+
                         <!-- form start -->
                         <form action="{{route('posts.store')}}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">title</label>
-                                    <input type="text" name="title" class="form-control">
+                                    <label for="exampleInputEmail1">Title</label>
+                                    <label>
+                                        <input type="text" name="title" class="form-control">
+                                    </label>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">body</label>
-                                    <textarea class="form-control" name="body" id="exampleFormControlTextarea1"
-                                              rows="3"></textarea></div>
+                                    <label for="exampleInputPassword1">Body</label>
+                                    <label for="exampleFormControlTextarea1"></label><textarea class="form-control" name="body" id="exampleFormControlTextarea1"
+                                                                                               rows="3"></textarea></div>
                             </div>
+
+
+                            <label>
+                                <select name="category_id">
+                                    <option value="">Select a Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+
+
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>

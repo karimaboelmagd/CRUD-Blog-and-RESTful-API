@@ -63,15 +63,27 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">title</label>
+                                    <label for="exampleInputEmail1">Title</label>
                                     <input type="text" name="title" value="{{$post->title}}" class="form-control"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">body</label>
+                                    <label for="exampleInputPassword1">Body</label>
                                     <textarea class="form-control" name="body" id="exampleFormControlTextarea1"
                                               rows="3" required>{{$post->body}}</textarea></div>
                             </div>
+
+
+                            <label>
+                                <select name="category_id">
+                                    <option value="">Select a Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+
+                           
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
