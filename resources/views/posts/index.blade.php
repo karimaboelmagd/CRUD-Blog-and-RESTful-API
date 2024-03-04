@@ -47,6 +47,12 @@
                         </div>
                     @endif
 
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                     <a href="{{route('posts.create')}}" class="btn btn-success" role="button" aria-disabled="true">Add Post</a><br><br>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
@@ -88,6 +94,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
 
 
 
